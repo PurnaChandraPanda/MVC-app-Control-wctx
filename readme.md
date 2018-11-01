@@ -134,7 +134,8 @@ For Owin WsFederation, we have the source code in [AspNetKatana repo](https://gi
             return protectedText;
         }
 
- ```
+```
+
 ### Encode API
 ```
 	namespace Microsoft.Owin.Security.DataHandler.Encoder
