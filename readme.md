@@ -14,9 +14,9 @@ HeaderName="Location", HeaderValue="https://adfs.contoso.com/adfs/ls/?wtrealm=ht
 As per the blog [https://blogs.technet.microsoft.com/askpfeplat/2014/11/02/adfs-deep-dive-comparing-ws-fed-saml-and-oauth/](https://blogs.technet.microsoft.com/askpfeplat/2014/11/02/adfs-deep-dive-comparing-ws-fed-saml-and-oauth/), "wctx" holds some session data that the application wants sent back to it after the user authenticates.
  
 As per the documentation of WS-Federation ["CreateSignInRequesst"](https://msdn.microsoft.com/en-us/library/system.identitymodel.services.wsfederationauthenticationmodule.createsigninrequest(v=vs.110).aspx) API, the parameters passed to the method are used to create the wctx message parameter. This is a string with the following format: ru=returnUrl&cx=SignInContext&rm=rememberMeSet&id=uniqueId.
-	* The ru value is set to the value of the returnUrl parameter passed in to the method and it specifies the URL that the module should direct the browser to following successful authentication. This is the only value stored in the wctx string that is used by the WSFAM. The module calls the GetReturnUrlFromResponse method to extract this value from the wctx parameter when processing a WS-Federation sign-in response. It should not be confused with the wreply message parameter, which is specified by the Reply property and which provides the address at the RP to which the security token service (STS) should direct its response. 
-	* The cx parameter is set to the value of the SignInContext property. This property is exposed to enable you to set any application-defined context that should be stored in the wctx string; however, WSFAM does not expose a method to extract this value in the response. If the value is needed by your application, you must provide the code to parse the wctx string and read this value when processing the response. You might accomplish this by overriding the GetReturnUrlFromResponse method.
-	* Neither the rm value, which is set to the value of the rememberMeSet parameter, nor the id parameter, which is set to the value of the uniqueId parameter are used by WSFAM. These can be set to any value.
+	..* The ru value is set to the value of the returnUrl parameter passed in to the method and it specifies the URL that the module should direct the browser to following successful authentication. This is the only value stored in the wctx string that is used by the WSFAM. The module calls the GetReturnUrlFromResponse method to extract this value from the wctx parameter when processing a WS-Federation sign-in response. It should not be confused with the wreply message parameter, which is specified by the Reply property and which provides the address at the RP to which the security token service (STS) should direct its response. 
+	..* The cx parameter is set to the value of the SignInContext property. This property is exposed to enable you to set any application-defined context that should be stored in the wctx string; however, WSFAM does not expose a method to extract this value in the response. If the value is needed by your application, you must provide the code to parse the wctx string and read this value when processing the response. You might accomplish this by overriding the GetReturnUrlFromResponse method.
+	..* Neither the rm value, which is set to the value of the rememberMeSet parameter, nor the id parameter, which is set to the value of the uniqueId parameter are used by WSFAM. These can be set to any value.
  
 As per the System.IdentityModel.Services source code, "wctx" is initialized by the following code.
 
@@ -156,8 +156,7 @@ The answer is "yes".
 The **wctx** can be used as a cross site scripting defense.  A value is added in a cookie that matches a value in the wctx, and the wctx is protected. On the client (browser), the wctx could be modified as the TLS is terminated. 
 If you are concerned (as per org policy), then use the extensibility to protect the wctx.
 
-1) 
-Create a custom library with a class, which overrides the event **WSFederationAuthenticationModule:: OnRedirectingToIdentityProvider**.
+1. Create a custom library with a class, which overrides the event **WSFederationAuthenticationModule:: OnRedirectingToIdentityProvider**.
 
 ``` 
 using System;
@@ -191,11 +190,9 @@ namespace CustomHttpModel
 }
 ```
  
-2)
-Later, add the custom dll reference to your web project.
+2. Later, add the custom dll reference to your web project.
  
-3)
-Modify web.config to read the custom module, instead of the original module WSFederationAuthenticationModule.
+3. Modify web.config to read the custom module, instead of the original module WSFederationAuthenticationModule.
 
 <pre> 
   &lt;system.webServer&gt;
