@@ -198,15 +198,15 @@ Later, add the custom dll reference to your web project.
 Modify web.config to read the custom module, instead of the original module WSFederationAuthenticationModule.
 
 <pre> 
-  <system.webServer>
+  &lt;system.webServer&gt;
 ..
 ..
-    <modules>
-      <remove name="FormsAuthentication" />
-              <!--add name="WSFederationAuthenticationModule" type="System.IdentityModel.Services.WSFederationAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" preCondition="managedHandler" /-->
-              <add name="CustomFedAuthModule" type="CustomHttpModel.CustomFedAuthModule, CustomHttpModel" preCondition="managedHandler" />
-              <add name="SessionAuthenticationModule" type="System.IdentityModel.Services.SessionAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" preCondition="managedHandler" />
-    </modules>
+    &lt;modules&gt;
+      &lt;remove name="FormsAuthentication" /&gt;
+              &lt;!--add name="WSFederationAuthenticationModule" type="System.IdentityModel.Services.WSFederationAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" preCondition="managedHandler" /--&gt;
+              &lt;add name="CustomFedAuthModule" type="CustomHttpModel.CustomFedAuthModule, CustomHttpModel" preCondition="managedHandler" /&gt;
+              &lt;add name="SessionAuthenticationModule" type="System.IdentityModel.Services.SessionAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" preCondition="managedHandler" /&gt;
+    &lt;/modules&gt;
 </pre>
 
 
