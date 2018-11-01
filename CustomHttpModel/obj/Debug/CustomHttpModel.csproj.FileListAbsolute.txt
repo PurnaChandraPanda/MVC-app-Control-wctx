@@ -1,0 +1,5 @@
+C:\work\apps\MVC-sample-wctx-research\CustomHttpModel\bin\Debug\CustomHttpModel.dll
+C:\work\apps\MVC-sample-wctx-research\CustomHttpModel\bin\Debug\CustomHttpModel.pdb
+C:\work\apps\MVC-sample-wctx-research\CustomHttpModel\obj\Debug\CustomHttpModel.dll
+C:\work\apps\MVC-sample-wctx-research\CustomHttpModel\obj\Debug\CustomHttpModel.pdb
+C:\work\apps\MVC-sample-wctx-research\CustomHttpModel\obj\Debug\CustomHttpModel.csprojResolveAssemblyReference.cache
