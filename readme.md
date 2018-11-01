@@ -197,7 +197,7 @@ Later, add the custom dll reference to your web project.
 3)
 Modify web.config to read the custom module, instead of the original module WSFederationAuthenticationModule.
 
-``` 
+<pre> 
   <system.webServer>
 ..
 ..
@@ -207,7 +207,7 @@ Modify web.config to read the custom module, instead of the original module WSFe
               <add name="CustomFedAuthModule" type="CustomHttpModel.CustomFedAuthModule, CustomHttpModel" preCondition="managedHandler" />
               <add name="SessionAuthenticationModule" type="System.IdentityModel.Services.SessionAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" preCondition="managedHandler" />
     </modules>
-``` 
+</pre>
 
 
 I believe with this we have full control on the "wctx" parameter construction. It can be modified as per own custom rule in .NET (via custom code). Feel free to clone the whole sample, and play around. (Note: It is a VS 2012 solution, but can be opened in any)
